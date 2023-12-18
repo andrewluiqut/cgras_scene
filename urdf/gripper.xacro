@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="gripper">
+  <xacro:macro name="gripper" params="connected_to:='' rpy:='0 0 0' xyz:='0 0 0'">
+
+    <xacro:unless value="${connected_to == ''}">
+      <joint name="gripper_joint" type="fixed">
+        <parent link="${connected_to}"/>
+        <child link="enclosure"/>
+        <origin xyz="${xyz}" rpy="${rpy}"/>
+      </joint>
+    </xacro:unless>
+
+    <link name="enclosure">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://cgras_scene/meshes/visual/CameraEnclosure_NODEPTHCAM v2.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://cgras_scene/meshes/collision/CameraEnclosure_NODEPTHCAM v2.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <!-- Reference Link for custom tool (Actual End of Tool for EE Control)-->
+    <link name="ee_control_link" />
+    <joint name="ee_control_joint" type="fixed">
+      <parent link="enclosure"/>
+      <child link="ee_control_link"/>
+      <origin xyz="0 -0.17914 0.24982" rpy="0 0 ${pi}"/>
+    </joint>
+
+    <!-- <link name="framos_link">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://armer_descriptions/data/custom/cgras_descriptions/meshes/visual/d435E-V1-1 v0.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://armer_descriptions/data/custom/cgras_descriptions/meshes/collision/d435E-V1-1 v0.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+    </link> -->
+
+    <!-- Gripper Joint Definitions (Includes Framos Model Individually)-->
+    <!-- <joint name="framos_joint" type="fixed">
+      <parent link="gripper_link"/>
+      <child link="framos_link"/>
+      <origin xyz="0 -0.02657 0.096" rpy="0 0 0"/>
+    </joint> -->
+
+    <!-- <xacro:include filename="$(find realsense2_description)/urdf/_d435.urdf.xacro"/>
+    <xacro:sensor_d435 parent="framos_link">
+      <origin xyz="0.00455 -0.0125 0.0165" rpy="0 ${-pi/2} ${-pi/2}"/>
+    </xacro:sensor_d435> -->
+
+  </xacro:macro>
+</robot>

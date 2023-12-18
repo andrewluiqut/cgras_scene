@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="trolley">
+  <xacro:macro name="trolley" params="connected_to:='' rpy:='0 0 0' xyz:='0 0 0'">
+    <xacro:unless value="${connected_to == ''}">
+      <joint name="robot_base_to_robot_joint" type="fixed">
+        <parent link="trolley_robot_base"/>
+        <child link="${connected_to}"/>
+        <origin xyz="${xyz}" rpy="${rpy}"/>
+      </joint>
+    </xacro:unless>
+
+    <link name="trolley">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://cgras_scene/meshes/visual/CLIPS_Trolley.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://cgras_scene/meshes/collision/CLIPS_Trolley.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <!-- Reference Link for trolley base link (to mount UR onto) -->
+    <link name="trolley_robot_base" />
+
+    <!-- Currently dependent on type of robot and should be peeled out -->
+    <joint name="trolley_to_base_joint" type="fixed">
+      <parent link="trolley"/>
+      <child link="trolley_robot_base"/>
+      <origin xyz="0 0 1.100" rpy="0 0 0"/>
+    </joint>
+
+  </xacro:macro>
+</robot>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="tank">
+  <xacro:macro name="tank" params="connected_to:='' rpy:='0 0 0' xyz:='0 0 0'">
+
+    <xacro:unless value="${connected_to == ''}">
+      <joint name="world_to_tag_joint" type="fixed">
+        <parent link="${connected_to}"/>
+        <child link="tank_tag"/>
+        <origin xyz="${xyz}" rpy="${rpy}"/>
+      </joint>
+    </xacro:unless>
+
+    <link name="tag_mount">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://cgras_scene/meshes/visual/Tag_Mount.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://cgras_scene/meshes/collision/Tag_Mount.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="tank">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://cgras_scene/meshes/visual/Settlement_Centred.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://cgras_scene/meshes/collision/Settlement_Centred.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="tank_tag"/>
+
+    <joint name="tag_to_mount_joint" type="fixed">
+      <parent link="tank_tag"/>
+      <child link="tag_mount"/>
+      <origin xyz="0.014 0 -0.082" rpy="0 ${pi/2} 0"/>
+    </joint>
+    
+    <joint name="mount_to_tank_join" type="fixed">
+      <parent link="tag_mount"/>
+      <child link="tank"/>
+      <origin xyz="0.415 -1.145 -1.075" rpy="0 0 0"/>
+    </joint>
+
+  </xacro:macro>
+</robot>
