@@ -29,29 +29,30 @@ roslaunch moveit_setup_assistant setup_assistant.launch
 Press Generate Collision Matrix button
 
 #### Virtual-joints
-Skip it
+virtual joint, trolley, world, fixed
 
 #### Planning Groups
 Add group 1
 - Group name: manipulator
 - Kinematic Solver: KDLKinematicsPlugin 
 - Keep default values in other fields
-- Add Kin. Chain button and Expand All
-- Set Base link: trolley (or base_link?)
+- Add Joints: from shoulder_pan_joint to ee_control_joint
+- Edit manipulator kinematic chain: nothing
+- Set Base link: trolley
 - Set Tip link: tool0
+- Subgroup: enclosure
 
 Add group 2
-- Group name: camera_enclosure
+- Group name: enclosure
 - Kinematic Solver: Nil
 - Keep default values in other fields
-- Add Links button
-- Select the link defined in gripper.xacro (enclosure and ee_control_link)
+- Add Links: flange to ee_control_link
 
 #### Define Robot Poses
-Define home pose
+Define stow and home pose
 
 #### Define End Effectors
-- End-effector name: camera_enclosure, group name: camera_enclosure, parent link: tool 0
+- ee, enclosure, wrist_3_link, manipulator
 
 #### Define Passive Joints
 Skip it

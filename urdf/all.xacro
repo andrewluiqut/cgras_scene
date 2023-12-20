@@ -2,19 +2,15 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="custom_env">
   <xacro:include filename="$(find ur_description)/urdf/ur10.xacro"/>
 
-  <xacro:include filename="$(find cgras_scene)/urdf/gripper.xacro"/>
+  <xacro:include filename="$(find cgras_scene)/urdf/enclosure.xacro"/>
 
   <xacro:include filename="$(find cgras_scene)/urdf/trolley.xacro"/>
 
   <xacro:include filename="$(find cgras_scene)/urdf/tank.xacro"/>
-  <!--
-  <xacro:include filename="$(find armer_descriptions)/data/custom/cgras_descriptions/robots/tank_right.xacro"/>
-  <xacro:include filename="$(find armer_descriptions)/data/custom/cgras_descriptions/robots/tank_left.xacro"/>
-  -->
-  <xacro:gripper xyz="0 0 0" rpy="0 0 0" connected_to="tool0" />
-  <!-- <xacro:xarm_device dof="6" /> -->
-  <!-- <xacro:gripper xyz="0 0 0" rpy="0 0 ${pi/2}" connected_to="link_eef" /> -->
-
+  <xacro:include filename="$(find cgras_scene)/urdf/tank_left.xacro"/>
+  <xacro:include filename="$(find cgras_scene)/urdf/tank_right.xacro"/>
+ 
+  <xacro:enclosure xyz="0 0 0" rpy="0 0 0" connected_to="tool0" />
   <xacro:trolley rpy="0 0 ${pi/2}" connected_to="base_link" />
 
   <!-- <xacro:tank xyz="0 0 0" rpy="0 0 ${pi/2}" connected_to="base_link" /> -->

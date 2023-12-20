@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="gripper">
-  <xacro:macro name="gripper" params="connected_to:='' rpy:='0 0 0' xyz:='0 0 0'">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="enclosure">
+  <xacro:macro name="enclosure" params="connected_to:='' rpy:='0 0 0' xyz:='0 0 0'">
 
     <xacro:unless value="${connected_to == ''}">
-      <joint name="gripper_joint" type="fixed">
+      <joint name="enclosure_joint" type="fixed">
         <parent link="${connected_to}"/>
         <child link="enclosure"/>
         <origin xyz="${xyz}" rpy="${rpy}"/>
@@ -48,9 +48,9 @@
       </collision>
     </link> -->
 
-    <!-- Gripper Joint Definitions (Includes Framos Model Individually)-->
+    <!-- enclosure Joint Definitions (Includes Framos Model Individually)-->
     <!-- <joint name="framos_joint" type="fixed">
-      <parent link="gripper_link"/>
+      <parent link="enclosure"/>
       <child link="framos_link"/>
       <origin xyz="0 -0.02657 0.096" rpy="0 0 0"/>
     </joint> -->
