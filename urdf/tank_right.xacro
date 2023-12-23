@@ -46,14 +46,14 @@
     <joint name="tank_right_tag_to_mount_joint" type="fixed">
       <parent link="tank_right_tag"/>
       <child link="tank_right_tag_mount"/>
-      <origin xyz="0.014 0 -0.082" rpy="0 ${pi/2} 0"/>
+      <origin xyz="0.014 0 -0.082" rpy="0 0 0"/>
     </joint>
     
     <!-- Where the tag is on the tank -->
     <joint name="tank_base_joint_right" type="fixed">
       <parent link="tank_right_tag_mount"/>
       <child link="tank_right"/>
-      <origin xyz="0.415 -0.0685 -1.075" rpy="0 0 0"/>
+      <origin xyz="0.41 0.06 -1.080" rpy="0 0 0"/>
     </joint>
 
   </xacro:macro>

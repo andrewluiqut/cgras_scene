@@ -11,15 +11,12 @@
   <xacro:include filename="$(find cgras_scene)/urdf/tank_right.xacro"/>
  
   <xacro:enclosure xyz="0 0 0" rpy="0 0 0" connected_to="tool0" />
-  <xacro:trolley rpy="0 0 ${pi/2}" connected_to="base_link" />
+  <xacro:trolley rpy="0 0 0" connected_to="base_link" />
 
-  <!-- <xacro:tank xyz="0 0 0" rpy="0 0 ${pi/2}" connected_to="base_link" /> -->
-  
 <!--
-  <xacro:tank_right xyz="0 0 0" rpy="0 0 0" connected_to="base_link" />
+  <xacro:tank_right xyz="0 -0.45 1.1" rpy="0 0 -${pi/2}" connected_to="trolley" />
   <xacro:tank_left xyz="0 0 0" rpy="0 0 0" connected_to="base_link" />
-  -->
-  <!-- <xacro:tank xyz="-0.5 0.75 0" rpy="${-pi/2} 0 ${pi/2}" connected_to="base_link" /> -->
+  <xacro:tank xyz="-0.5 0.75 0" rpy="${-pi/2} 0 ${pi/2}" connected_to="base_link" /> -->
 <!-- 
   <link name="world" />
 

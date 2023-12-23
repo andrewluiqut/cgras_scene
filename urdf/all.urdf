@@ -409,7 +409,7 @@
   <joint name="robot_base_to_robot_joint" type="fixed">
     <parent link="trolley_robot_base"/>
     <child link="base_link"/>
-    <origin rpy="0 0 1.5707963267948966" xyz="0 0 0"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
   </joint>
   <link name="trolley">
     <visual>
@@ -433,12 +433,10 @@
     <child link="trolley_robot_base"/>
     <origin rpy="0 0 0" xyz="0 0 1.100"/>
   </joint>
-  <!-- <xacro:tank xyz="0 0 0" rpy="0 0 ${pi/2}" connected_to="base_link" /> -->
   <!--
-  <xacro:tank_right xyz="0 0 0" rpy="0 0 0" connected_to="base_link" />
+  <xacro:tank_right xyz="0 -0.45 1.1" rpy="0 0 -${pi/2}" connected_to="trolley" />
   <xacro:tank_left xyz="0 0 0" rpy="0 0 0" connected_to="base_link" />
-  -->
-  <!-- <xacro:tank xyz="-0.5 0.75 0" rpy="${-pi/2} 0 ${pi/2}" connected_to="base_link" /> -->
+  <xacro:tank xyz="-0.5 0.75 0" rpy="${-pi/2} 0 ${pi/2}" connected_to="base_link" /> -->
   <!-- 
   <link name="world" />
 
